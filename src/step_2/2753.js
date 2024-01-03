@@ -3,11 +3,18 @@ const readline = require('readline').createInterface({
     output: process.stdout,
 });
 
-let input = [];
+let input;
 
 readline.on('line', function(line) {
-    input = line.split(' ').map(el => Number(el));
+    input = Number(line);
 }).on('close', function(){
+    const year = input;
+
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+        console.log('1');
+    } else {
+        console.log('0');
+    }
 
     process.exit();
 });
